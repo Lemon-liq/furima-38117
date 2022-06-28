@@ -1,74 +1,24 @@
-# テーブル設計
-(string型, NOT NULL )
-## users テーブル
+# README
 
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| nickname           | string | null: false               |
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false               |
-| name               | string | null: false               |
-| name_katakana      | string | null: false, unique: true |
-| birthday           | string | null: false               |
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### Association
+Things you may want to cover:
 
-- has_many :items
-- has_one :buys
+* Ruby version
 
-## items テーブル
+* System dependencies
 
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| text               | string     | null: false                    |
-| category           | string     | null: false                    |
-| condition          | string     | null: false                    |
-| delivery_charge    | string     | null: false                    |
-| ships_from         | string     | null: false                    |
-| number             | string     | null: false                    |
-| price              | string     | null: false                    |
-| commission         | string     | null: false                    |
-| grace              | string     | null: false                    |
-| user               | references | null: false, foreign_key: true |
+* Configuration
 
-### Association
+* Database creation
 
-- belongs_to :users
-- has_one :buys
-- has_one :deliverys
+* Database initialization
 
-## buys テーブル
+* How to run the test suite
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| card_number     | string     | null: false                    |
-| effective_date1 | string     | null: false                    |
-| effective_date2 | string     | null: false                    |
-| security_code   | string     | null: false                    |
-| user            | references | null: false, foreign_key: true |
-| item            | references | null: false, foreign_key: true |
+* Services (job queues, cache servers, search engines, etc.)
 
-### Association
+* Deployment instructions
 
-- belongs_to :users
-- belongs_to :items
-- has_one :deliverys
-
-## deliverys テーブル
-
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| zip_code         | string     | null: false                    |
-| state            | string     | null: false                    |
-| city             | string     | null: false                    |
-| address_line1    | string     | null: false                    |
-| address_line2    | string     | null: false                    |
-| tel              | string     | null: false                    |
-| item             | references | null: false, foreign_key: true |
-| buy              | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :buys
-- belongs_to :items
+* ...
