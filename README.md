@@ -7,14 +7,11 @@
 | nickname                        | string   | null: false               |
 | email                           | string   | null: false, unique: true |
 | encrypted_password              | string   | null: false               |
-| encrypted_password_confirmation | string   | null: false               |
 | last_name                       | string   | null: false               |
 | first_name                      | string   | null: false               |
 | last_name_katakana              | string   | null: false,              |
 | first_name_katakana             | string   | null: false,              |
-| year                            | detetime | null: false               |
-| month                           | detetime | null: false               |
-| day                             | detetime | null: false               |
+| birth                           | date     | null: false               |
 
 ### Association
 
@@ -26,31 +23,24 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
+| price              | integer    | null: false                    |
 | text               | text       | null: false                    |
-| category           | string     | null: false                    |
-| condition          | string     | null: false                    |
-| prefectures_id     | string     | null: false                    |
-| ships_from         | string     | null: false                    |
-| number             | string     | null: false                    |
-| price              | string     | null: false                    |
-| commission         | string     | null: false                    |
-| grace              | string     | null: false                    |
+| category           | integer    | null: false                    |
+| condition          | integer    | null: false                    |
+| delivery_charge    | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| number             | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_one :buy
-- has_one :delivery
 
 ## buys テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| card_number     | string     | null: false                    |
-| effective_date1 | string     | null: false                    |
-| effective_date2 | string     | null: false                    |
-| security_code   | string     | null: false                    |
 | user            | references | null: false, foreign_key: true |
 | item            | references | null: false, foreign_key: true |
 
@@ -64,12 +54,15 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| zip_code         | string     | null: false                    |
-| prefectures_id   | integer    | null: false                    |
+| card_number      | integer    | null: false                    |
+| effective        | integer    | null: false                    |
+| security_code    | integer    | null: false                    |
+| zip_code         | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | city             | string     | null: false                    |
 | address_line1    | string     | null: false                    |
 | address_line2    | string     |                                |
-| tel              | string     | null: false                    |
+| tel              | integer    | null: false                    |
 | buy              | references | null: false, foreign_key: true |
 
 ### Association
