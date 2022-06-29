@@ -25,11 +25,11 @@
 | name               | string     | null: false                    |
 | price              | integer    | null: false                    |
 | text               | text       | null: false                    |
-| category           | integer    | null: false                    |
-| condition          | integer    | null: false                    |
-| delivery_charge    | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
-| number             | integer    | null: false                    |
+| number_id          | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
 ### Association
@@ -54,15 +54,12 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| card_number      | integer    | null: false                    |
-| effective        | integer    | null: false                    |
-| security_code    | integer    | null: false                    |
-| zip_code         | integer    | null: false                    |
+| zip_code         | string     | null: false                    |
 | prefecture_id    | integer    | null: false                    |
 | city             | string     | null: false                    |
 | address_line1    | string     | null: false                    |
 | address_line2    | string     |                                |
-| tel              | integer    | null: false                    |
+| tel              | string     | null: false                    |
 | buy              | references | null: false, foreign_key: true |
 
 ### Association
