@@ -20,9 +20,5 @@ class User < ApplicationRecord
 
 
   validates :nickname, presence: true
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :last_name_katakana, presence: true
-  validates :first_name_katakana, presence: true
   validates :birth, presence: true
 end
