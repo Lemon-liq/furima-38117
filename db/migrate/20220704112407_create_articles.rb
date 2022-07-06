@@ -6,7 +6,7 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.text :text,                  null: false
       t.integer :category_id,        null: false
       t.integer :condition_id,       null: false
-      t.integer :delivery_charge_id, null: false
+      t.integer :deliverycharge_id, null: false
       t.integer :prefecture_id,      null: false
       t.integer :number_id,          null: false
       t.references :user,            null: false, foreign_key: true

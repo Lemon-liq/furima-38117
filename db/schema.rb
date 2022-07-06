@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_112407) do
     t.text "text", null: false
     t.integer "category_id", null: false
     t.integer "condition_id", null: false
-    t.integer "delivery_charge_id", null: false
+    t.integer "deliverycharge_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "number_id", null: false
     t.bigint "user_id", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_112407) do
     t.text "text", null: false
     t.integer "category_id", null: false
     t.integer "condition_id", null: false
-    t.integer "delivery_charge_id", null: false
+    t.integer "deliverycharge_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "number_id", null: false
     t.bigint "user_id", null: false
