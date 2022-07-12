@@ -1,16 +1,16 @@
 class DeliveriesController < ApplicationController
+  before_action :move_to_index, only: [:index]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @buy_delivery = BuyDelivery.new
-    @item = Item.find(params[:item_id])
   end
 
   def new
     @buy_delivery = BuyDelivery.new
   end
 
-  def create
-    @item = Item.find(params[:item_id])
+  def create   
     @buy_delivery = BuyDelivery.new(delivery_params)
     if @buy_delivery.valid?
       pay_item
@@ -28,7 +28,7 @@ class DeliveriesController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_8060cf840fcd8c3710b5cf1a"
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,  # 商品の値段
       card: delivery_params[:token],    # カードトークン
@@ -36,4 +36,14 @@ class DeliveriesController < ApplicationController
     )
   end
   
+  def move_to_index
+    unless user_signed_in?
+      redirect_to root_path
+    end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
 end
