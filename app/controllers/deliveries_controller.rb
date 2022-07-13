@@ -1,6 +1,7 @@
 class DeliveriesController < ApplicationController
-  before_action :move_to_index, only: [:index]
+  before_action :authenticate_user!, only: [:index]
   before_action :set_item, only: [:index, :create]
+  before_action :move_to_index, only: [:index]
 
   def index
     @buy_delivery = BuyDelivery.new
@@ -35,15 +36,15 @@ class DeliveriesController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
-  
-  def move_to_index
-    unless user_signed_in?
-      redirect_to root_path
-    end
-  end
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
+  
+  def move_to_index
+    if @item.buy.present? || current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 
 end
