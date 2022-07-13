@@ -1,6 +1,6 @@
 class BuyDelivery
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :zip_code, :prefecture_id, :city, :address_line1, :address_line2, :tel, :buy_id, :token
+  attr_accessor :user_id, :item_id, :zip_code, :prefecture_id, :city, :address_line1, :address_line2, :tel, :token
 
   validates :zip_code, presence: true, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
@@ -9,6 +9,7 @@ class BuyDelivery
   validates :tel, presence: true, format: { with: /\A\d{10,11}\z/, message: 'is invalid. One-byte numbers only' }
   validates :user_id, presence: true
   validates :item_id, presence: true
+  validates :token, presence: true
 
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)

@@ -1,5 +1,6 @@
 const pay = () => {
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+  // PAYJPの読み込みがうまくいかない時
   // console.log(process.env.PAYJP_PUBLIC_KEY)
   const submit = document.getElementById("button");
   submit.addEventListener("click", (e) => {

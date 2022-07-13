@@ -54,7 +54,7 @@ RSpec.describe BuyDelivery, type: :model do
         @delivery.valid?
         expect(@delivery.errors.full_messages).to include('Tel is invalid. One-byte numbers only')
       end
-      it 'telが11桁以上では購入できないこと' do
+      it 'telが12桁以上では購入できないこと' do
         @delivery.tel = '090123456789'
         @delivery.valid?
         expect(@delivery.errors.full_messages).to include('Tel is invalid. One-byte numbers only')
@@ -78,6 +78,11 @@ RSpec.describe BuyDelivery, type: :model do
         @delivery.item_id = nil
         @delivery.valid?
         expect(@delivery.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'tokenが空では購入できないこと' do
+        @delivery.token = nil
+        @delivery.valid?
+        expect(@delivery.errors.full_messages).to include("Token can't be blank")
       end
     end
   end

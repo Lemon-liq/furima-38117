@@ -7,10 +7,6 @@ class DeliveriesController < ApplicationController
     @buy_delivery = BuyDelivery.new
   end
 
-  def new
-    @buy_delivery = BuyDelivery.new
-  end
-
   def create
     @buy_delivery = BuyDelivery.new(delivery_params)
     if @buy_delivery.valid?
