@@ -51,5 +51,6 @@ class Prefecture < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  belongs_to :items
+  belongs_to :item
+  belongs_to :delivery
 end
